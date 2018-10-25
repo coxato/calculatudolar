@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+{% block title_page %}
+<title>calcula tus dolares hoy</title>
+{% endblock title_page %}
+
+{% block page_content %}
+
+<div class="espaciado"></div>
+<!--fecha actual-->
+<div id="fecha"></div>
+    
+<!--tasas del dia-->
+<section class="tasas_principal_container_master">
+        <div class="tasas_principal_container">
+
+            <div class="contenedorTasasAirtm">
+                 <p class="mensajeCargando" id="mensajeCargandoAirtm">cargando...</p>
+                 <p class="titulo_categoria">tasas de AirTM</p>
+                <div class="tasasAirtm">
+                        <div class="esp fondoTasa ctasa"></div>
+                        <div class="compra fondoTasa ctasa">compra</div>
+                        <div class="venta fondoTasa ctasa">venta</div>
+                        <div class="infoAirtm">transferencia bancaria</div>
+                        <div class="tasaAirtm"></div>
+                        <div class="tasaAirtm"></div>
+                        <div class="infoAirtm fondoTasa">mercadopago</div>
+                        <div class="tasaAirtm fondoTasa"></div>
+                        <div class="tasaAirtm fondoTasa"></div>
+                        <div class="infoAirtm">money gram</div>
+                        <div class="tasaAirtm"></div>
+                        <div class="tasaAirtm"></div>
+                        <div class="infoAirtm fondoTasa">Western Union</div>
+                        <div class="tasaAirtm fondoTasa"></div>
+                        <div class="tasaAirtm fondoTasa"></div>
+                </div>
+            </div>
+    
+    
+            <div class="contenedorTasasToday">
+                <p class="mensajeCargando" id="mensajeCargandoToday">cargando...</p>
+                <p class="titulo_categoria">tasas de dolartoday</p>
+                <div class="tasasToday">
+                    <div class="esp fondoTasa ctasa"></div>
+                    <div class="E fondoTasa ctasa" >euro €</div>
+                    <div class="dolar fondoTasa ctasa">dolar $</div>
+                    <div class="infoDolarToday">dolartoday</div>
+                    <div class="tasaToday"></div>
+                    <div class="tasaToday"></div>
+                    <div class="infoDolarToday fondoTasa">efectivo cucuta</div>
+                    <div class="tasaToday fondoTasa"></div>
+                    <div class="tasaToday fondoTasa"></div>
+                    <div class="infoDolarToday">sicad1</div>
+                    <div class="tasaToday"></div>
+                    <div class="tasaToday"></div>
+                    <div class="infoDolarToday fondoTasa">sicad2</div>
+                    <div class="tasaToday fondoTasa"></div>
+                    <div class="tasaToday fondoTasa"></div>
+                </div>
+            </div>
+    
+            
+            <div class="contenedor_de_tasas_monitor">
+            <p class="mensajeCargando" id="mensajeCargandoMonitorDolar">cargando...</p>
+            <p class="titulo_categoria">promedios de @MonitorDolarVe</p>
+                <div class="tasasMonitor">
+                    <div class="esp fondoTasa ctasa"></div>
+                    <div class="E fondoTasa ctasa" >euro €</div>
+                    <div class="dolar fondoTasa ctasa">dolar $</div>
+                    <div id="fechaMonitor">hora</div>
+                    <div class="fechaMonitor"></div>
+                    <div class="fechaMonitor"></div>
+                    <div class="descripcion_promedio">promedio general</div>
+                    <div class="tasaMonitor"></div>
+                    <div class="tasaMonitor"></div>
+                </div>
+            </div>
+        </div>
+    
+</section>
+
+
+
+{% comment %} ========== calculadoras ========== {% endcomment %}
+<h1 id="titulo_calculadora">convierte dolares a bolivares ó viceversa</h1>
+<div class="actualizar_container">
+<button onclick="actualizar()">actualizar</button>
+</div>
+<section class="contenedor_principal_calculadoras">
+
+<div class="opciones_principales">
+    <div class="botonAirtmCont">
+        <button id="botonAirtm" value="btnAirtm" onclick="seleccionPrincipal(this.value,1)">calculadora AirTM</button>
+    </div>
+    <div class="botonTodayCont">
+            <button id="botonToday" value="btnToday" onclick="seleccionPrincipal(this.value,0)">calculadora dolartoday</button>
+    </div>
+</div>
+
+<div class="contenedor_calculadoras">
+
+    <div id class="div_calc_today calc">
+    <input type="number" placeholder="ingresa la cantidad" id="cantidadToday">
+        <div class="select_calc_today">
+            <select  id="select1" onchange="calcularOnchangeToday()">
+                <option value="dolar">dolar $</option>
+                <option value="euro">euro €</option>
+            </select>
+            <select id="select2Today" onchange="calcularOnchangeToday()">
+                <option value="dolartoday">dolartoday</option>
+                <option value="efectivo">efectivo cucuta</option>
+                <option value="sicad1">sicad1</option>
+                <option value="sicad2">sicad2</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="div_calc_airtm calc active">
+            <div class="select_calc_airtm">
+                <select  id="select2" onchange="calcularOnchangeAirtm()">
+                        <option value="vender">vender $</option>
+                        <option value="comprar">comprar $</option>
+                    </select>
+                <select id="select2Airtm" onchange="calcularOnchangeAirtm()">
+                    <option value="banco">transferencia bancaria</option>
+                    <option value="mercado">mercadopago</option>
+                    <option value="money">Money gram</option>
+                    <option value="union">Western Union</option>
+                </select>
+            </div>
+    <input type="number" placeholder="ingresa la cantidad" id="cantidadAirtm">
+
+        </div>
+</div>
+</section>
+
+<div id="mostrando"></div>
+<div id="ayuda_descriptiva"></div>
+
+{% load static %}
+ <script>
+    let urlSoup = "{% url 'ajax_soup' %}"
+</script>
+<script src="{% static 'js/index.js' %}"></script>
+{% endblock page_content %}

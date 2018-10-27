@@ -27,4 +27,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',TemplateView.as_view(template_name = 'index.html'),name = 'welcome'),
     path('scraping',views.AjaxSoup,name = 'ajax_soup'),
+    path('scraping2',views.Bcucuta,name = 'Bcucuta'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

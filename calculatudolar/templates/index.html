@@ -61,7 +61,7 @@
             
             <div class="contenedor_de_tasas_monitor">
             <p class="mensajeCargando" id="mensajeCargandoMonitorDolar">cargando...</p>
-            <p class="titulo_categoria">promedios de @MonitorDolarVe</p>
+            <p class="titulo_categoria">promedio de @MonitorDolarVe</p>
                 <div class="tasasMonitor">
                     <div class="esp fondoTasa ctasa"></div>
                     <div class="E fondoTasa ctasa" >euro €</div>
@@ -74,6 +74,16 @@
                     <div class="tasaMonitor"></div>
                 </div>
             </div>
+
+            <div class="contenedor_tasa_Bcucuta">
+                <p class="mensajeCargando" id="mensajeCargandoBcucuta">cargando...</p>
+                <div class="titulo_categoria"> Indicador por @bolivarcucuta </div>
+                <div class="tasasBcucuta">
+                    <div class="fondoTasa ctasa">dolar en frontera</div>
+                    <div id="tasaBcucuta"></div>
+                </div>
+            </div>
+            <p>*todas las tasas están reflejadas en bolívares soberanos</p>
         </div>
     
 </section>
@@ -94,12 +104,18 @@
     <div class="botonTodayCont">
             <button id="botonToday" value="btnToday" onclick="seleccionPrincipal(this.value,0)">calculadora dolartoday</button>
     </div>
+    <div class="botonMonitorCont">
+        <button id="botonMonitor" value="btnMonitor" onclick="seleccionPrincipal(this.value,2)">calculadora MonitorDolar</button>
+    </div>
+    <div class="botonBcucutaCont">
+        <button id="botonBcucuta" value="btnBcucuta" onclick="seleccionPrincipal(this.value,3)">calculadora dolartoday</button>
+    </div>
+
 </div>
 
 <div class="contenedor_calculadoras">
-
+    <!-- ================== calculadora today ===============-->
     <div id class="div_calc_today calc">
-    <input type="number" placeholder="ingresa la cantidad" id="cantidadToday">
         <div class="select_calc_today">
             <select  id="select1" onchange="calcularOnchangeToday()">
                 <option value="dolar">dolar $</option>
@@ -111,9 +127,10 @@
                 <option value="sicad1">sicad1</option>
                 <option value="sicad2">sicad2</option>
             </select>
+            <input type="text" placeholder="ingresa la cantidad" id="cantidadToday">
         </div>
     </div>
-
+    <!-- ============   calculadora airtm ================  -->
     <div class="div_calc_airtm calc active">
             <div class="select_calc_airtm">
                 <select  id="select2" onchange="calcularOnchangeAirtm()">
@@ -127,9 +144,21 @@
                     <option value="union">Western Union</option>
                 </select>
             </div>
-    <input type="number" placeholder="ingresa la cantidad" id="cantidadAirtm">
+    <input type="text" placeholder="ingresa la cantidad" id="cantidadAirtm">
 
         </div>
+        <!-- ============== calculadora Monitor =============-->
+        <div class="div_calc_monitor calc">
+            <select id="select_monitor" onchange="calcularOnchangeMonitor()" >
+                <option value="dolar">Dolar $</option>
+                <option value="euro">Euro €</option>
+            </select>
+            <input type="text" placeholder="ingresa la cantidad" id="cantidadMonitor">
+        </div>
+        <!-- ============== calculadora Bcucuta ==============-->
+        <div class="div_calc_Bcucuta calc">
+                <input type="text" placeholder="ingresa la cantidad" id="cantidadBcucuta">
+            </div>
 </div>
 </section>
 
@@ -138,7 +167,8 @@
 
 {% load static %}
  <script>
-    let urlSoup = "{% url 'ajax_soup' %}"
+    let urlSoup = "{% url 'ajax_soup' %}";
+    let urlBcucuta = "{% url 'Bcucuta' %}";
 </script>
 <script src="{% static 'js/index.js' %}"></script>
 {% endblock page_content %}

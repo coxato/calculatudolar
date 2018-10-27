@@ -6,17 +6,23 @@ let calculadorasDivs = [...document.querySelectorAll('.calc')];
 let cambiarOrden = () => {
     orden = !orden
     if(eleccion == 1){calcularAirtm(cantidadAirtm.value)}
-    else{calcularToday(cantidadToday.value)}
+    else if(eleccion == 2){calcularToday(cantidadToday.value)}
+    else if(eleccion == 3){calcularMonitor(cantidadMonitor.value)}
+    else{calcularBcucuta(cantidadBcucuta.value)}
 };
 // ============== datos para usar ==============
-let cambiosToday = [];
-let cambiosAirtm = [];
-let cambiosMonitorDolar;
+let cambiosToday = [],
+cambiosAirtm = [],
+cambiosMonitorDolar = [],
+cambiosBcucuta;
+
 
 // mensaje de cargando
 let mensajeCargandoToday = document.getElementById('mensajeCargandoToday');
 let mensajeCargandoAirtm = document.getElementById('mensajeCargandoAirtm');
 let mensajeCargandoMonitorDolar = document.getElementById('mensajeCargandoMonitorDolar');
+let mensajeCargandoBcucuta = document.getElementById('mensajeCargandoBcucuta');
+
 // contenedor <div>  para la ayuda del usuario con airtm
 let descripcionAirtm = document.getElementById('ayuda_descriptiva');
 
@@ -39,6 +45,7 @@ const actualizar = () => {
     traerDataAirtm();
     traerDataToday();
     traerDataMonitor();
+    traerDataBcucuta();
     mostrarFecha();
 }
 
@@ -68,14 +75,15 @@ function dynamicMenu(){
 
 
 
-
-
 // si se hace onchange se calcula de una vez
 function calcularOnchangeToday(){
     calcularToday(cantidadToday.value);
 }
 function calcularOnchangeAirtm(){
     calcularAirtm(cantidadAirtm.value);
+}
+function calcularOnchangeMonitor(){
+    calcularMonitor(cantidadMonitor.value);
 }
 
 // ======******===========************=============************======
@@ -84,7 +92,7 @@ function calcularOnchangeAirtm(){
 function cambiar_calculadoras(index){
     let seccionCalculadoras = document.querySelector('.contenedor_calculadoras');
    
-    let colors = ['green','#4a91de'];
+    let colors = ['green','#4a91de','rgb(248, 92, 35)','#ffdd27'];
     for(let i = 0; i < calculadorasDivs.length;i++){
         if(calculadorasDivs[i].className.includes('active')){
             calculadorasDivs[i].className = calculadorasDivs[i].className.replace('active','');
@@ -107,13 +115,30 @@ function seleccionPrincipal(value,index){
         cambiar_calculadoras(index);
         eleccion = 2
     }
+    else if(value === 'btnMonitor'){
+        cambiar_calculadoras(index);
+        eleccion = 3
+    }
+    else{
+        cambiar_calculadoras(index);
+        eleccion = 4
+    }
 }
 
 // =========================  obtener cantidad =========================
+//1
 let cantidadToday = document.getElementById('cantidadToday');
 cantidadToday.addEventListener('keyup',obtenerCantidadToday);
+//2
 let cantidadAirtm = document.getElementById('cantidadAirtm');
 cantidadAirtm.addEventListener('keyup',obtenerCantidadAirtm);
+//3
+let cantidadMonitor = document.getElementById('cantidadMonitor');
+cantidadMonitor.addEventListener('keyup',obtenerCantidadMonitor);
+//4
+let cantidadBcucuta = document.getElementById('cantidadBcucuta');
+cantidadBcucuta.addEventListener('keyup',obtenerCantidadBcucuta);
+//contenedor del resultado
 let muestraContainer = document.getElementById('mostrando');
 
 function obtenerCantidadToday(){
@@ -121,11 +146,16 @@ function obtenerCantidadToday(){
 }
 function obtenerCantidadAirtm(){
     calcularAirtm(this.value);
-    
+}
+function obtenerCantidadMonitor(){
+    calcularMonitor(this.value);
+}
+function obtenerCantidadBcucuta(){
+    calcularBcucuta(this.value);
 }
 
 // ================= calcular dolar Today===================
-function formulaToday(orden,cifra,cambio){
+function formulaNormal(cifra,cambio){
     if(orden){//de usd$ a BS.s
         return cifra * cambio;
     }else{//de BS.s a usd$
@@ -148,28 +178,27 @@ let cambioEURSicad2 = cambiosToday[6].eurSicad2;
     let opcion2 = document.getElementById('select2Today').value;
     if(opcion === 'dolar'){
         switch(opcion2){
-            case 'dolartoday': resultado = formulaToday(orden,cifra,cambioUSDToday); break;
-            case 'efectivo': resultado = formulaToday(orden,cifra,cambioUSDEfectivo);break;
-            case 'sicad1': resultado = formulaToday(orden,cifra,cambioUSDSicad1);break;
-            case 'sicad2': resultado = formulaToday(orden,cifra,cambioUSDSicad2);break;
+            case 'dolartoday': resultado = formulaNormal(cifra,cambioUSDToday); break;
+            case 'efectivo': resultado = formulaNormal(cifra,cambioUSDEfectivo);break;
+            case 'sicad1': resultado = formulaNormal(cifra,cambioUSDSicad1);break;
+            case 'sicad2': resultado = formulaNormal(cifra,cambioUSDSicad2);break;
         }
         divisa = '$';
     }else{  // si son euros lo que se quiere cambiar
         switch(opcion2){
-            case 'dolartoday': resultado = formulaToday(orden,cifra,cambioEURToday); break;
-            case 'efectivo': resultado = formulaToday(orden,cifra,cambioEUREfectivo);break;
-            case 'sicad1': resultado = formulaToday(orden,cifra,cambioEURSicad1);break;
-            case 'sicad2': resultado = formulaToday(orden,cifra,cambioEURSicad2);break;
+            case 'dolartoday': resultado = formulaNormal(cifra,cambioEURToday); break;
+            case 'efectivo': resultado = formulaNormal(cifra,cambioEUREfectivo);break;
+            case 'sicad1': resultado = formulaNormal(cifra,cambioEURSicad1);break;
+            case 'sicad2': resultado = formulaNormal(cifra,cambioEURSicad2);break;
         }
         divisa = '€';
         
     }
-    console.log('este es resultado en calculoToday',resultado);
     
     separarCifraYResultado(cifra,resultado,divisa)
 }
 // ================= calcular AirTM ===================
-function formulaAirtm(opcion,orden,cifra,cambio){
+function formulaAirtm(opcion,cifra,cambio){
  const comision = 0.30;
 
     // esta función retorna el calculo y el cambio con el que se
@@ -197,23 +226,49 @@ function calcularAirtm(numeros){
     let opcion2 = document.getElementById('select2Airtm').value;
     if(opcion === 'vender'){
         switch(opcion2){
-            case 'banco': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[0].venta);break;
-            case 'mercado': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[1].venta);break;
-            case 'money': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[2].venta);break;
-            case 'union': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[3].venta);break;
+            case 'banco': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[0].venta);break;
+            case 'mercado': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[1].venta);break;
+            case 'money': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[2].venta);break;
+            case 'union': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[3].venta);break;
         }
     }
     else{  // si se quiere comprar
         switch(opcion2){
-            case 'banco': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[0].compra);break;
-            case 'mercado': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[1].compra);break;
-            case 'money': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[2].compra);break;
-            case 'union': resultado = formulaAirtm(opcion,orden,cifra,cambiosAirtm[3].compra);break;
+            case 'banco': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[0].compra);break;
+            case 'mercado': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[1].compra);break;
+            case 'money': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[2].compra);break;
+            case 'union': resultado = formulaAirtm(opcion,cifra,cambiosAirtm[3].compra);break;
         } 
     }                                             
     // ayuda al usuario con descripcion del calculo 
                                         //para pasar el cambio 
     ayudaAirtm(cifra,resultado[0],opcion,resultado[1])
+}
+
+// calcular MonitorDolar ===================
+function calcularMonitor(numeros){
+    let cifra = parseFloat(numeros);
+    let divisa = '';
+    let value = document.getElementById('select_monitor').value;
+    let resultado;
+    if(value === 'dolar'){
+        divisa = '$'
+        resultado = formulaNormal(cifra,cambiosMonitorDolar.dolar);
+    }else{
+        divisa = '€'
+        resultado = formulaNormal(cifra,cambiosMonitorDolar.euro);
+    }
+    separarCifraYResultado(cifra,resultado,divisa)
+
+}
+
+// calcular Bcucuta
+function calcularBcucuta(numeros){
+    let cifra = parseFloat(numeros);
+    let divisa = '$';
+    let resultado = formulaNormal(cifra,cambiosBcucuta)
+    separarCifraYResultado(cifra,resultado,divisa);
+
 }
 
 
@@ -279,7 +334,6 @@ function separarPorComas(calculo){
     separados = decimales.split('.'),
     // enteros = los enteros a separar por comas
     enteros = [...separados[0]].reverse();
-    console.log(cantidad);
 
     let salida = [];//donde se iran guardando los valores ya separados
     let aux = '';// guarda en string de 3 en 3 cifras  
@@ -310,18 +364,17 @@ function separarPorComas(calculo){
 
 function dibujarCantidades(cifra,resultado,divisa){
     let simbolos;
-    orden ? simbolos = [divisa,'BS.s'] : simbolos = ['BS.s',divisa]; 
+    orden ? simbolos = [divisa,'Bs.S'] : simbolos = ['Bs.S',divisa]; 
     muestraContainer.innerHTML = `
     <div class="contenedor_resultado">
     <h1 class="resultado">${simbolos[0]} ${cifra} = ${simbolos[1]} ${resultado}</h1>
     <a class="cambiar_orden" onclick="cambiarOrden()">
         <p>Invertir el orden</p>
-        <img src="./flechas.svg" id="flechas">
+        <img src="../static/img/flechas.svg" id="flechas">
     </a>
     </div>
     `
 }
-
 
 // ==================función para traer data de dolartoday==================
 async function traerDataToday(){
@@ -380,6 +433,31 @@ function traerDataMonitor(){
     })
     .catch(err => manejoDeError(err,'monitorDolarVe'))
 }
+// traer datos de bolivar cucuta
+function traerDataBcucuta(){
+    fetch(urlBcucuta)
+    .then(response => response.text())
+    .then(txt => {
+        cambiosBcucuta = '';
+        let arr = txt.split('hoy')
+        arr.splice(0,1)
+        let lineas = arr[0].split('\n')
+        let separado = [],
+        tasaBcucuta;
+        for(const i of lineas){
+            if(i != ''){
+                separado.push(i)
+            }
+        }
+        tasaBcucuta = separado[2].split(' ')
+        tasaBcucuta = parseFloat(tasaBcucuta[0].replace(',','.'))
+        cambiosBcucuta = tasaBcucuta;
+        mensajeCargandoBcucuta.textContent = '';
+
+        dibujarTasaBcucuta(cambiosBcucuta);
+    })
+}
+
 
 // ===================== manejo de error =====================
 function manejoDeError(err,casaDeCambios){
@@ -450,9 +528,20 @@ function dibujarTasasMonitor(tasasMonitor){
         cuadros[i].textContent = valores[i];
         cuadrosFechas[i].textContent = fechas[i];
     }
+    // guardar la tasa numerica luego de pintar
+    cambiosMonitorDolar = {
+        'euro': parseFloat(separarTasa[0][1].split('BsS')),
+        'dolar': parseFloat(separarTasa[1][1].split('BsS'))
+    }
 }
 
+function dibujarTasaBcucuta(tasa){
+    document.getElementById('tasaBcucuta').innerHTML = `
+    <p id="tBcucuta">${tasa} Bs.S</p>
+    `
+}
 
 traerDataToday();
 traerDataAirtm();
 traerDataMonitor();
+traerDataBcucuta();

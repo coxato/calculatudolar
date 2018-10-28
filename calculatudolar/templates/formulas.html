@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title_page %}
+<title>como funciona calculatudolar?</title>
+{% endblock title_page %}
+
+
+{% block page_content %}
+<section class="super_descripcion">
+        <h1 class="super_h1">¿cómo funciona calculatudolar?</h1>
+        <h2 class="super_h2">una breve explicación de como se calcula en la calculadora(valga la redundancia) y como se obtienen los datos</h2>
+    <div class="descripcion_cont">
+        <!--p1-->
+        <div class="parrafo_cont">
+            <h1 class="titulos_descripcion">cómo se calculan los cambios de AirTM</h1>
+            <p>&nbsp;&nbsp;Si bien para todas las demas calculadoras es un calculo simple: <b>multiplicar ó dividir</b> para la calculadora de AirTM es un poco diferente ya que la comision de <b>0.30$</b> por parte de ellos juega un papel fundamental a la hora de calcular el cambio
+            </p>
+            <p>&nbsp;&nbsp; Pero no te preocupes que a continuación se te muestra la formula: </p>
+
+            <h2>si vas a comprar:</h2>
+            <p class="parrafo_orden">de <b>dólares a bolívares</b></p>
+            <h4>formula</h4>
+            
+            {% load static %}
+            <div class="imagen_formula">
+                <img src="{% static 'img/formulaCompraDBs.png' %}" alt="formula-de-airtm">
+            </div>
+            <h4>ejemplo con tasa de compra a 214.52 Bs.S</h4>
+            <div class="imagen_formula">
+                    <img src="{% static 'img/compraEjemploDBs.png' %}" alt="formula-de-airtm">
+            </div>
+            <!--viceversa-->
+            <p class="parrafo_orden">de <b>bolívares a dólares</b></p>
+            <h4>formula:</h4>
+            
+            {% load static %}
+            <div class="imagen_formula">
+                <img src="{% static 'img/formulaCompraBsD.png' %}" alt="formula-de-airtm">
+            </div>
+            
+            <h4>ejemplo con tasa de compra a 214.52 Bs.S</h4>
+            <div class="imagen_formula">
+                    <img src="{% static 'img/compraEjemploBsD.png' %}" alt="formula-de-airtm">
+            </div>
+            <!--Venta-->
+            <h2>si vas a Vender:</h2>
+            <p class="parrafo_orden">de <b>dólares a bolívares</b></p>
+            <h4>formula:</h4>
+            {% load static %}
+            <div class="imagen_formula">
+                <img src="{% static 'img/formulaVentaDBs.png' %}" alt="formula-de-airtm">
+            </div>
+            
+            <h4>ejemplo con tasa de venta a 190.24 Bs.S</h4>
+            <div class="imagen_formula">
+                    <img src="{% static 'img/VentaEjemploDBs.png' %}" alt="formula-de-airtm">
+            </div>
+            <!--viceversa venta-->
+            <p class="parrafo_orden">de <b>bolívares a dólares</b></p>
+            <h4>formula:</h4>
+            {% load static %}
+            <div class="imagen_formula">
+                <img src="{% static 'img/formulaVentaBsD.png' %}" alt="formula-de-airtm">
+            </div>
+            
+            <h4>ejemplo con tasa de venta a 190.24 Bs.S</h4>
+            <div class="imagen_formula">
+                    <img src="{% static 'img/VentaEjemploBsD.png' %}" alt="formula-de-airtm">
+            </div>
+
+        </div>
+        <!--p2-->
+        <div class="parrafo_cont">
+            
+                <h1 class="titulos_descripcion">como se pueden tener los datos de todas esas páginas?</h1>
+                <p>&nbsp;&nbsp; Seguro te preguntarás "como se hizo para tener los mismos datos que en dolartoday(por ejemplo)?".La respuesta es simple: una API ... <b>¿y qué es una API?</b> <a href="https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones">aquí</a> te lo explican mejor, pero para resumir es un "programa/archivo" que proporciona datos y se le puede enviar o bien recibir datos como es este el caso. </p>
+                <p>Una API se ve como <a href="https://s3.amazonaws.com/dolartoday/data.json" target="_blank">esto</a>, esos datos se procesan y se utilizan como se necesiten, y <b>como se procesan?</b> , simple , <b>JavaScript</b> un  lenguaje de programación súper util.</p>
+                <h2>¿y en el caso de no contar con una API?</h2>
+                <p>&nbsp;&nbsp;Pues en este caso se deben optener los datos de otra manera y la respuesta es <b>web scraping</b> que es eso?, con que se come?, el web scraping es una manera de entrar a un sitio web y obtener información de él. <br>por ejemplo @bolivarcucuta no posee API, bueno no que yo sepa, por ende se debe ingresar a su cuenta en twitter para poder optener la tasa del dolar en frontera</p>
+                <p>y con qué se hace eso??, simple , <b>python</b> un lenguaje de programación exelente para aprender a programar, aunque también se puede hacer con <b>PHP, Ruby ,ó incluso javascript con nodejs</b></p>
+            </div>
+            <!--p3-->
+        <div class="parrafo_cont">
+                <h1 class="titulos_descripcion">ACLARATORIA</h1>
+                <p>&nbsp;&nbsp;Éste sitio web no busca ser un cambio oficial o referencial del valor del dolar y euro paralelos en Venezuela, el único propósito es el de informar dichos cambios y/o tasas</p>
+                <p>&nbsp;&nbsp; Los datos proporcionados son gracias a:</p>
+                <ul>
+                    <li><a target="_blank" href="https://airtmrates.com">airtmrates</a>*</li>
+                    <li><a target="_blank" href="https://dolartoday.com">dolartoday</a>*</li>
+                    <li><a target="_blank" href="https://twitter.com/MonitorDolarVe">@MonitorDolarVe</a>*</li>
+                    <li><a target="_blank" href="https://twitter.com/bolivarcucuta">@bolivarcucuta</a>*</li>
+                </ul>
+                <p><b style="text-decoration: underline;">NOTA:</b>&nbsp;&nbsp; *no se utilizan todos los datos de dichas webs, sólo se usan los más relevantes en este caso, se recomienda visitar sus sitios y/o perfiles para obtener toda la informacion detallada</p>
+            </div>
+            
+    </div>
+</section>
+{% endblock page_content %}

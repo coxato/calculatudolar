@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title_page %}
+<title>porqué usar calculatudolar?</title>
+{% endblock title_page %}
+
+{% block page_content %}
+
+<section class="super_descripcion">
+    <div class="descripcion_cont">
+        <!--p1-->
+        <div class="parrafo_cont">
+            <h1 class="titulos_descripcion">¿cómo te ayuda <a href="{% url 'welcome' %}">calculatudolar</a>?</h1>
+            <p>&nbsp;&nbsp;En calculatudolar se te ayuda a ver a cuanto está el dólar actualmente y convertir de dólares a bolivares y viceversa(bueno el nombre lo dice todo no?)</p>
+        </div>
+        <!--p2-->
+        <div class="parrafo_cont">
+            <h1 class="titulos_descripcion">ok pero, por qué debería usar o confiar en éste sitio?</h1>
+            <p>&nbsp;&nbsp; La creación de este sitio web surgió por la necesidad de no encontrar una página que englobara todos los posibles cambios y/o tasas del dólar y que estuvieran al día</p>
+            <p>&nbsp;&nbsp;Que por qué usarla?, porque todos lo datos que se muestran son por parte de las páginas más consultadas en el momento tales como lo son <a href="https://airtmrates.com">airtmrates</a> para quienes trabajan con AirTM,<a href="">dolartoday</a>,<a href="https://twitter.com/MonitorDolarVe">@MonitorDolarVe</a>, y <a href="https://twitter.com/bolivarcucuta">@bolivarcucuta</a></p> además <b>todos los datos son actuales</b>, puedes comprobar ingresando en los sitios mencionados anteriormente y ver que son los mismos, si quieres saber cómo hacer eso revisa <a href="{% url 'formulas' %}">aquí</a>
+        </div>
+        <!--p3-->
+        <div class="parrafo_cont">
+            <h1 class="titulos_descripcion">Cómo usar las calculadoras?</h1>
+            <p>&nbsp;&nbsp;Como pudiste notar, se te ayuda a calcular el dólar gracias a 4 calculadoras, son simples la verdad, pero muy útiles, <b>en especial la de</b> AirTM que te dice cuantos dólares obtendrías si los compras a travéz de AirTM ó cuantos bolívares puedes retirar dependiendo de cuanto poseas en AirTM, es util para saber rapidamente cuanto te darían sin tener la necesidad de ingresar en AirTM para hacer los calculos</p>
+            <p>Ahora bien, si quieres calcular cuanto te quitarian por pasar de tu paypal a AirTM u otra operación parecida con criptomonedas etc... bueno allí si te toca entrar a AirTM.com ya que siempre están cambiando porcentajes y comisiones, <b>recuerda que</b> aqui en <b>calculatudolar</b> en la parte de la calculadora AirTM solo te ayudamos a calcular la compra de dólares $ con  Bs.S,  ó la venta de dólares por Bs.S</p>
+        </div>
+        <!--p4-->
+        <div class="parrafo_cont">
+            <h1 class="titulos_descripcion">ACLARATORIA</h1>
+            <p>&nbsp;&nbsp;Éste sitio web no busca ser un cambio oficial o referencial del valor del dólar y euro paralelos en Venezuela, el único propósito es el de informar dichos cambios y/o tasas</p>
+            <p>&nbsp;&nbsp; Los datos proporcionados son gracias a:</p>
+            <ul>
+                <li><a target="_blank" href="https://airtmrates.com">airtmrates</a>*</li>
+                <li><a target="_blank" href="https://dolartoday.com">dolartoday</a>*</li>
+                <li><a target="_blank" href="https://twitter.com/MonitorDolarVe">@MonitorDolarVe</a>*</li>
+                <li><a target="_blank" href="https://twitter.com/bolivarcucuta">@bolivarcucuta</a>*</li>
+            </ul>
+            <p><b style="text-decoration: underline;">NOTA:</b>&nbsp;&nbsp; *no se utilizan todos los datos de dichas webs, sólo se usan los más relevantes en este caso, se recomienda visitar sus sitios y/o perfiles para obtener toda la informacion detallada</p>
+        </div>
+        <div class="parrafo_cont">
+            <h1 class="titulos_descripcion">quieres saber cómo se creo calculatudolar?</h1>
+            <p>&nbsp;&nbsp; en <a href="{% url 'formulas' %}">este enlace</a> puedes ver como funciona y como se realizó calculatudolar</p>
+        </div>
+
+
+    </div>
+</section>
+
+
+{% endblock page_content %}

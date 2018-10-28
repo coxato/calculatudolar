@@ -1,0 +1,50 @@
+*{
+    margin: 0;
+}
+.super_h1{
+    font-size: 38px;
+    text-align: center;
+}
+.super_h2{
+    font-size: 17px;
+    text-align: center;
+}
+.super_descripcion{
+    background: rgb(233, 233, 233);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.descripcion_cont{
+    width: 80%;
+
+}
+.parrafo_cont{
+    /* border: 2px solid red; */
+    margin-top: 10px;
+    margin-bottom: 2em;
+}
+.titulos_descripcion{
+    font-size: 1.9em;
+    text-align: center;
+    margin-bottom: 12px;
+}
+.parrafo_cont p{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    margin-bottom: 9px;
+}
+.parrafo_cont h2{
+    font-size: 28px;
+    font-weight: bold;
+}
+.parrafo_orden{
+    font-size: 21px;
+    text-decoration: underline;
+    color: rgb(255, 99, 43);
+}
+
+.imagen_formula, .imagen_formula img{
+    width: 100%;
+}

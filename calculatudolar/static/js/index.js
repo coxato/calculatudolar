@@ -49,30 +49,7 @@ const actualizar = () => {
     mostrarFecha();
 }
 
-
-// ============  menu dinamico =================
-let header,logo;
-window.addEventListener('scroll',dynamicMenu);
-function dynamicMenu(){
-    header = document.getElementById('header');
-    logo = document.getElementById('contenedorLogo');
-    let yPosition = window.pageYOffset;
-    if(yPosition > 110){
-        header.style.height = '35px';
-        logo.style.width = '20px'
-        logo.innerHTML = `<a href='#'>home</a>`
-        header.style.justifyContent = 'space-around';
-    }else{
-        header.style.height = '100px';
-        logo.style.width = '200px'
-        header.style.justifyContent = 'space-evenly';
-        logo.innerHTML = `
-        <img id="logo" src="../static/img/logo2.png" alt="calcular-dolar-venezuela">`
-    }
-}
-
 // ===***===*** fin de las variables globales ===***===***===***===***===***
-
 
 
 // si se hace onchange se calcula de una vez
@@ -316,7 +293,7 @@ function ayudaAirtm(cifra,resultado,opcion,cambio){
     
     descripcionAirtm.innerHTML = `
     <ul>
-        <li>tasa del dia: 1AirUSD = <b>${cambio} BS.s</b> </>
+        <li>tasa del dia: 1AirUSD = <b>${cambio} Bs.S</b> </>
         <li>cambio sin comisión: <b>${cambioSinComision.toFixed(2)}</b></li>
         <li>comision AirTM: <b>0.30$</b></li>
     </ul>

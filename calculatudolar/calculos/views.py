@@ -46,7 +46,6 @@ def AjaxSoup(request):
             break
     
 
-    print('esto es listo',listo)
     return HttpResponse(json.dumps(listo))
 
 
@@ -58,16 +57,13 @@ def Bcucuta(request):
     soup = BeautifulSoup(text,'html.parser')
     contenido = soup.select('.js-tweet-text-container')
 
-    print(len(contenido))
     for div in contenido:
         elementos.append(div.getText())
 
-    print(len(elementos))
     for element in elementos:
         if 'DOLAR EN FRONTERA' in element:
             tasa.append(element)
 
-    print(tasa)
     return HttpResponse(tasa)
 
 

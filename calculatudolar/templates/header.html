@@ -1,9 +1,11 @@
 <header class="header" id="header">
     {% load static %}
         <div id="contenedorLogo">
-            <img id="logo" src="{% static 'img/logo2.png' %}" alt="calcular-dolar-venezuela">
+            <a href="{% url 'welcome' %}">
+                <img id="logo" src="{% static 'img/logo2.png' %}" alt="calcular-dolar-venezuela">
+            </a>
         </div>
-        <a href="#">tasas</a>
-        <a href="#">calculadora</a>
-        <a href="#">ésto de que sirve?</a>
+        <a href="{% url 'welcome' %}">tasas</a>
+        <a href="{% url 'welcome' %}#calcu">calculadora</a>
+        <a href="{% url 'why' %}">ésto de que sirve?</a>
     </header>

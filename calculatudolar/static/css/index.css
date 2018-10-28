@@ -208,6 +208,23 @@
 
 
 /* ========================== calculadoras ========================= */
+.titulo_calculadora_cont{
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+.titulo_calculadora_cont button{
+    border-radius: 9px;
+    background: #333542;
+    color: white;
+    padding: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+}
 
 .contenedor_principal_calculadoras{
     position: relative;
@@ -388,7 +405,7 @@ footer{
 
 
 /* ========================== responsive design =================== */
-@media screen and (max-width: 770px){
+@media screen and (max-width: 801px){
     #fecha{
         font-size: 21px;
     }

@@ -1,18 +1,20 @@
 <footer>
         <div class="links_footer">
             <div class="izq_footer">
-                <p>datos de dolartoday gracias a su <a href="https://s3.amazonaws.com/dolartoday/data.json" target="_blank">API</a></p>
-                <p>datos de AirTM gracias a <a href="https://airtmrates.com" target="_blank">airtmrates.com</a></p>
-                <p><div>Logo made with <a href="https://www.designevo.com/en/" title="Free Online Logo Maker" target="_blank">DesignEvo</a></div></p>
+                <p>datos de dolartoday gracias a su <a target="_blank" href="https://s3.amazonaws.com/dolartoday/data.json">API</a></p>
+                <p>datos de AirTM gracias a <a target="_blank" href="https://airtmrates.com" target="_blank">airtmrates.com</a></p>
+                <p><div>Logo made with <a target="_blank" href="https://www.designevo.com/en/" title="Free Online Logo Maker">DesignEvo</a></div></p>
             </div>
             <div class="der_footer">
-                <p><a href="#">cómo funciona éste sitio web?</a></p>
+                <p>datos de MonitorDolar gracias <a target="_blank" href="https://twitter.com/MonitorDolarVe">@MonitorDolarVe</a></p>
+                <p>datos de bolivarcucuta gracias a <a target="_blank" href="https://twitter.com/bolivarcucuta">@bolivarcucuta</a></p>
+                <p><a href="{% url 'formulas' %}">cómo funciona éste sitio web?</a></p>
             </div>
         </div>
 
         <div class="cont_copy">
             <div class="copy">
-                <a href="#">calculatudolar.online</a> copyright 2018
+                <a href="{% url 'welcome' %}">calculatudolar.online</a> copyright 2018
             </div>
             <div class="img_footer_logo">
                     {% load static %}

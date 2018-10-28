@@ -28,4 +28,6 @@ urlpatterns = [
     path('',TemplateView.as_view(template_name = 'index.html'),name = 'welcome'),
     path('scraping',views.AjaxSoup,name = 'ajax_soup'),
     path('scraping2',views.Bcucuta,name = 'Bcucuta'),
+    path('por-que-calculatudolar/',TemplateView.as_view(template_name = 'why.html'),name = 'why'),
+    path('como-funciona/',TemplateView.as_view(template_name = 'formulas.html'),name = 'formulas'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

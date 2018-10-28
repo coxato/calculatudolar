@@ -6,15 +6,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/about.css' %}">
     {% block title_page %}
     
     {% endblock title_page %}
 </head>
 <body>
     {% include "header.html" %}
+    <div class="espaciado"></div>
+
     {% block page_content %}
-    
     {% endblock page_content %}
+
+
     {% include "footer.html" %}
+    <script>
+        // ============  menu dinamico =================
+let header,logo;
+window.addEventListener('scroll',dynamicMenu);
+function dynamicMenu(){
+    header = document.getElementById('header');
+    logo = document.getElementById('contenedorLogo');
+    let yPosition = window.pageYOffset;
+    if(yPosition > 110){
+        header.style.height = '35px';
+        logo.style.width = '20px'
+        logo.innerHTML = `<a href="{% url 'welcome' %}">home</a>`
+        header.style.justifyContent = 'space-around';
+    }else{
+        header.style.height = '100px';
+        logo.style.width = '200px'
+        header.style.justifyContent = 'space-evenly';
+        logo.innerHTML = `
+        <a href="{% url 'welcome' %}">
+        <img id="logo" src="../static/img/logo2.png" alt="calcular-dolar-venezuela">
+        </a>
+        `
+    }
+}
+    </script>
 </body>
 </html>

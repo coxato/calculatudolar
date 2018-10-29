@@ -16,8 +16,9 @@
             <div class="copy">
                 <a href="{% url 'welcome' %}">calculatudolar.online</a> copyright 2018
             </div>
+            {% load static %}
+            <a href="https://github.com/carlosEdua/calculatudolar" target="_blank"><img id="github_logo" src="{% static 'img/github.png' %}" alt="calcula-tu-dolar-github"></a>
             <div class="img_footer_logo">
-                    {% load static %}
                     <img id="logo" src="{% static 'img/logo2.png' %}" alt="calcular-dolar-venezuela">        
             </div>
         </div>

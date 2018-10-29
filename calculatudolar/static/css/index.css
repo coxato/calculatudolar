@@ -210,7 +210,7 @@
 /* ========================== calculadoras ========================= */
 .titulo_calculadora_cont{
     width: 100%;
-    padding: 15px;
+    padding-bottom: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -401,6 +401,10 @@ footer{
             width: 100%;
         }
 
+        #github_logo{
+            width: 32px;
+            height: 32px;
+        }
 /* =========================== footer ==================================== */
 
 

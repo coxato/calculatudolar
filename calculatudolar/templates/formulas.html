@@ -19,7 +19,7 @@
             <h2>si vas a comprar:</h2>
             <p class="parrafo_orden">de <b>dólares a bolívares</b></p>
             <h4>formula</h4>
-            
+
             {% load static %}
             <div class="imagen_formula">
                 <img src="{% static 'img/formulaCompraDBs.png' %}" alt="formula-de-airtm">
@@ -31,26 +31,27 @@
             <!--viceversa-->
             <p class="parrafo_orden">de <b>bolívares a dólares</b></p>
             <h4>formula:</h4>
-            
+
             {% load static %}
             <div class="imagen_formula">
                 <img src="{% static 'img/formulaCompraBsD.png' %}" alt="formula-de-airtm">
             </div>
-            
+
             <h4>ejemplo con tasa de compra a 214.52 Bs.S</h4>
             <div class="imagen_formula">
                     <img src="{% static 'img/compraEjemploBsD.png' %}" alt="formula-de-airtm">
             </div>
             <!--Venta-->
             <h2>si vas a Vender:</h2>
-            <p class="parrafo_orden">de <b>dólares a bolívares</b></p>
+                <p class="parrafo_orden">de <b>dólares a bolívares</b></p>
             <h4>formula:</h4>
             {% load static %}
             <div class="imagen_formula">
                 <img src="{% static 'img/formulaVentaDBs.png' %}" alt="formula-de-airtm">
             </div>
-            
+
             <h4>ejemplo con tasa de venta a 190.24 Bs.S</h4>
+
             <div class="imagen_formula">
                     <img src="{% static 'img/VentaEjemploDBs.png' %}" alt="formula-de-airtm">
             </div>
@@ -61,7 +62,7 @@
             <div class="imagen_formula">
                 <img src="{% static 'img/formulaVentaBsD.png' %}" alt="formula-de-airtm">
             </div>
-            
+
             <h4>ejemplo con tasa de venta a 190.24 Bs.S</h4>
             <div class="imagen_formula">
                     <img src="{% static 'img/VentaEjemploBsD.png' %}" alt="formula-de-airtm">
@@ -70,7 +71,7 @@
         </div>
         <!--p2-->
         <div class="parrafo_cont">
-            
+
                 <h1 class="titulos_descripcion">como se pueden tener los datos de todas esas páginas?</h1>
                 <p>&nbsp;&nbsp; Seguro te preguntarás "como se hizo para tener los mismos datos que en dolartoday(por ejemplo)?".La respuesta es simple: una API ... <b>¿y qué es una API?</b> <a href="https://es.wikipedia.org/wiki/Interfaz_de_programaci%C3%B3n_de_aplicaciones">aquí</a> te lo explican mejor, pero para resumir es un "programa/archivo" que proporciona datos y se le puede enviar o bien recibir datos como es este el caso. </p>
                 <p>Una API se ve como <a href="https://s3.amazonaws.com/dolartoday/data.json" target="_blank">esto</a>, esos datos se procesan y se utilizan como se necesiten, y <b>como se procesan?</b> , simple , <b>JavaScript</b> un  lenguaje de programación súper util.</p>
@@ -91,7 +92,7 @@
                 </ul>
                 <p><b style="text-decoration: underline;">NOTA:</b>&nbsp;&nbsp; *no se utilizan todos los datos de dichas webs, sólo se usan los más relevantes en este caso, se recomienda visitar sus sitios y/o perfiles para obtener toda la informacion detallada</p>
             </div>
-            
+
     </div>
 </section>
 {% endblock page_content %}

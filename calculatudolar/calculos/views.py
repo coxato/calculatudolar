@@ -11,24 +11,29 @@ def AjaxSoup(request):
     arrLineasTexto = []
     limpio = []
     listo = []
-    data = rq.get('https://elpropio.net/monitordolarve/')
+    data = rq.get('https://twitter.com/monitordolarve')
     text = data.text
     soup = BeautifulSoup(text,'html.parser')
-    parrafos = soup.select('.ctf-tweet-text')
+    parrafos = soup.select('.js-tweet-text-container')
 
     for pf in parrafos:
         textoParrafo.append(pf.getText())
 
+
     for txtPf in textoParrafo:
         arrLineasTexto.append(txtPf.split('\n'))
 
+
     for lineas in arrLineasTexto:
-        if 'paralelo' in lineas[0]:
+        if 'paralelo en Venezuela' in lineas[1]:
             limpio.append(
-                {"moneda": lineas[0],
-                "fecha": lineas[1],
-                "tasa": lineas[3]})
+                {"moneda": lineas[1],
+                "fecha": lineas[2],
+                "tasa": lineas[4]})
+    #import pdb; pdb.set_trace()
     
+    print('esto es limpio  ',limpio)
+
     for i in range(len(limpio)):
         if 'Euro' in limpio[i]["moneda"]:
             listo.append({
@@ -44,6 +49,8 @@ def AjaxSoup(request):
                 "fecha":limpio[i]["fecha"]
                 })
             break
+    
+    print('ya listo ',listo)
     
 
     return HttpResponse(json.dumps(listo))

@@ -30,9 +30,7 @@ def AjaxSoup(request):
                 {"moneda": lineas[1],
                 "fecha": lineas[2],
                 "tasa": lineas[4]})
-    #import pdb; pdb.set_trace()
     
-    print('esto es limpio  ',limpio)
 
     for i in range(len(limpio)):
         if 'Euro' in limpio[i]["moneda"]:
@@ -49,8 +47,6 @@ def AjaxSoup(request):
                 "fecha":limpio[i]["fecha"]
                 })
             break
-    
-    print('ya listo ',listo)
     
 
     return HttpResponse(json.dumps(listo))

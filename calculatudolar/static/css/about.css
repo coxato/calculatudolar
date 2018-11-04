@@ -23,16 +23,16 @@
 .parrafo_cont{
     /* border: 2px solid red; */
     margin-top: 10px;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
 }
 .titulos_descripcion{
-    font-size: 1.9em;
+    font-size: 2em;
     text-align: center;
     margin-bottom: 12px;
 }
 .parrafo_cont p{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 19px;
+    font-size: 21px;
     margin-bottom: 9px;
 }
 .parrafo_cont h2{

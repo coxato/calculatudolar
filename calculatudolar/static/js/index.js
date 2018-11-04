@@ -441,7 +441,7 @@ function manejoDeError(err,casaDeCambios){
     setTimeout( () => {
         alert(`lo siento :(  pero no se han podido cargar los datos
         de ${casaDeCambios}.
-comprueba tu conexión a internet
+puede que sea tu conexión a internet ó un error en los servidores de ${casaDeCambios}
         error:
         ${err}`)
     },3000)

@@ -23,7 +23,7 @@ SECRET_KEY = 'inf06$)tiuw8%o)4-pk5&7xy@6l_=95f+^4!j+1z*eh2+(l6(c'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['calculatudolar.pythonanywhere.com']
 

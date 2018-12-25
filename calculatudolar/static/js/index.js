@@ -332,7 +332,7 @@ function separarPorComas(calculo){
     let juntos = volteado.map(el => el.join(''));
     
     let finalizado = juntos.reverse().join('.');
-    
+    prueba = finalizado.concat(',',separados[1]); 
     return finalizado.concat(',',separados[1]);
         
 }
@@ -340,6 +340,13 @@ function separarPorComas(calculo){
 // ================ dibujar elementos =====================
 
 function dibujarCantidades(cifra,resultado,divisa){
+    window.a = cifra;
+    window.b = resultado;
+    console.log(window.a,window.b);
+    
+    if(cifra.split(',')[0] === 'NaN' || resultado.split(',')[0] === 'NaN'){
+        muestraContainer.innerHTML = `<h2>por favor ingresa una cantidad</h2>`
+    }else{
     let simbolos;
     orden ? simbolos = [divisa,'Bs.S'] : simbolos = ['Bs.S',divisa]; 
     muestraContainer.innerHTML = `
@@ -351,6 +358,7 @@ function dibujarCantidades(cifra,resultado,divisa){
     </a>
     </div>
     `
+    }
 }
 
 // ==================función para traer data de dolartoday==================

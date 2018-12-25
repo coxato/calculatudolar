@@ -248,7 +248,7 @@
     justify-content: center;
     align-items: center;
     color: black;
-    padding: 7px 0;
+    padding: 10px 0;
 }
 .botonTodayCont{
     background: green;
@@ -410,6 +410,15 @@ footer{
 
 /* ========================== responsive design =================== */
 @media screen and (max-width: 801px){
+    
+    header{
+        height: auto;
+    }
+    
+    #contenedorLogo{
+        width: 121px;
+    }
+    
     #fecha{
         font-size: 21px;
     }
@@ -418,12 +427,28 @@ footer{
         grid-template-columns: 1fr;
     }
 
+    .ctasa{
+        font-size: 25px;
+    }
+
+    .titulo_calculadora_cont{
+        text-align: center;
+    }
+
     .opciones_principales{
-        height: 80px;
-        font-size: 17px;
+        height: 160px;
+        flex-direction: column;
     }
     .div_calc_today,.div_calc_airtm{
         flex-direction: column;
+    }
+
+    #mostrando{
+        text-align: center;
+    }
+
+    .links_footer{
+        font-size: 16px;
     }
     
 }

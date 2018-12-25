@@ -23,7 +23,7 @@
     {% include "footer.html" %}
     <script>
         // ============  menu dinamico =================
-let header,logo;
+let header, logo;
 window.addEventListener('scroll',dynamicMenu);
 function dynamicMenu(){
     header = document.getElementById('header');
@@ -33,10 +33,11 @@ function dynamicMenu(){
         header.style.height = '35px';
         logo.style.width = '20px'
         logo.innerHTML = `<a href="{% url 'welcome' %}">home</a>`
+        logo.style.fontSize = '17px';
         header.style.justifyContent = 'space-around';
     }else{
-        header.style.height = '100px';
-        logo.style.width = '200px'
+        header.style.height = 'auto';
+        logo.style.width = menuResponsiveLetters() ? '120px' : '200px';
         header.style.justifyContent = 'space-evenly';
         logo.innerHTML = `
         <a href="{% url 'welcome' %}">
@@ -45,6 +46,27 @@ function dynamicMenu(){
         `
     }
 }
+
+// =========  letras más pequeñas en el menu  ==========
+let mediaQuerie = window.matchMedia("(max-width: 660px)");
+// función que se ejecuta con el eventListener cuando 
+// se cumple la condición del media-querie
+function menuResponsiveLetters(mediaQ = mediaQuerie){
+    // enlaces del menu
+    let enlaces = document.querySelectorAll('header a'); 
+    if(mediaQ.matches){
+        enlaces[3].textContent = 'ayuda';
+        enlaces.forEach( el => el.style.fontSize = '17px');
+        return true;
+    }else{
+        enlaces[3].textContent = 'ésto de que sirve?';
+        enlaces.forEach( el => el.style.fontSize = '20px');
+        return false;
+    }
+}
+mediaQuerie.addListener(menuResponsiveLetters);
+menuResponsiveLetters(mediaQuerie);
+
     </script>
 </body>
 </html>

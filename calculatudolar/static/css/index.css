@@ -337,6 +337,12 @@ select{
 #flechas{
     width: 40px;
 }
+
+/* mensaje para que ingrese una cantidad */
+#mostrando{
+    text-align: center;
+}
+
 /* ayuda de airtm */
 #ayuda_descriptiva{
     text-align: center;
